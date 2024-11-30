@@ -1,0 +1,28 @@
+name: CI/CD for ML Model
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Train model
+      run: |
+        python src/train.py
+    
+    - name: Upload trained model
+      uses: actions/upload-artifact@v4
+      with:
+        name: trained_model
+        path: models/trained_model.pkl
