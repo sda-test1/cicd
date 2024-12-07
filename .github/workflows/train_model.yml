@@ -24,3 +24,9 @@ jobs:
 
       - name: Train the model
         run: python src/train.py
+
+      - name: Upload model
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained_model
+          path: models/model.joblib
