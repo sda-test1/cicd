@@ -13,4 +13,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-print(model.score(X_test, y_test))
+
+score = model.score(X_test, y_test)
+assert score > 0.8, 'Unsatisfied score'
+print('Model score:', score)
